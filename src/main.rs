@@ -1,4 +1,5 @@
 mod config;
+mod db;
 mod fmt;
 mod helius;
 mod io;
@@ -11,7 +12,6 @@ mod time;
 mod types;
 
 use crate::config::load_config;
-use crate::fmt::{c_cyan, c_dim, c_green, c_pink, c_red, c_reset, c_yellow};
 use crate::io::{load_reputation, save_reputation};
 use crate::market::cache::MarketCache;
 use crate::market::discovery::{merge_discovered, MarketDiscovery};
@@ -30,7 +30,9 @@ async fn main() {
     if let Err(e) = load_reputation() {
         eprintln!(
             "{}⚠️ Failed to load reputation files:{} {}",
-            c_yellow, c_reset, e
+            fmt::ORANGE,
+            fmt::RESET,
+            e
         );
     }
 
@@ -53,6 +55,7 @@ async fn main() {
     let mut discovery = MarketDiscovery::default();
     let mut shadow = scoring::shadow::ShadowMap::new();
 
+    let mut db_conn = crate::db::Db::open("solana_meme.sqlite").expect("db open failed");
     // PumpPortal -> stream new token mints into the bot
     let (pump_tx, mut pump_rx) = mpsc::channel::<String>(10_000);
     let cfg_pp = cfg.clone();
@@ -62,7 +65,8 @@ async fn main() {
 
     println!(
         "{}🚀 Solana Meme Sniper started{} (Ctrl+C to stop)",
-        c_green, c_reset
+        fmt::NEON_GREEN,
+        fmt::RESET
     );
 
     tokio::select! {
@@ -83,7 +87,7 @@ async fn main() {
                 }
 
                 if pump_added > 0 {
-                    println!("{}🟣 pumpportal{} added={} coins={}", c_pink, c_reset, pump_added, coins.len());
+                    println!("{}🟣 pumpportal{} added={} coins={}", fmt::NEON_PINK, fmt::RESET, pump_added, coins.len());
                 }
 
                 // 2) Periodic Dexscreener discovery (slow path)
@@ -92,18 +96,18 @@ async fn main() {
                     let added = merge_discovered(&mut discovered, new_mints.clone(), 200);
 
                     if added > 0 {
-                        println!("{}🕵️ discovery{} got={} added={} coins={}", c_cyan, c_reset, new_mints.len(), added, coins.len());
+                        println!("{}🕵️ discovery{} got={} added={} coins={}", fmt::LIGHT_BLUE, fmt::RESET, new_mints.len(), added, coins.len());
                         for mint in new_mints {
                             coins.entry(mint).or_insert_with(CoinState::new);
                         }
                     } else {
-                        println!("{}…no new mints this cycle{}", c_dim, c_reset);
+                        println!("{}…no new mints this cycle{}", fmt::RESET, fmt::RESET);
                     }
                 }
 
                 println!(
                     "{}🫀 tick{} coins={} active={} calls={} discovered={}",
-                    c_yellow, c_reset,
+                    fmt::ORANGE, fmt::RESET,
                     coins.len(),
                     active.len(),
                     calls.len(),
@@ -126,6 +130,7 @@ async fn main() {
                     &mut calls,
                     &market,
                     &mut shadow,
+                    &mut db_conn,
                 );
 
                 resolver::resolve_calls(&cfg, &coins, &mut calls);
@@ -135,7 +140,7 @@ async fn main() {
         } => {}
 
         _ = signal::ctrl_c() => {
-            println!("\n{}🛑 Ctrl+C — saving & exiting...{}", c_red, c_reset);
+            println!("\n{}🛑 Ctrl+C — saving & exiting...{}", fmt::ORANGE, fmt::RESET);
             let _ = save_reputation();
         }
     }

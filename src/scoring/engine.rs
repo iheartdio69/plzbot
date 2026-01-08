@@ -12,6 +12,7 @@ pub fn score_and_manage(
     calls: &mut Vec<CallRecord>,
     market: &MarketCache,
     shadow_map: &mut shadow::ShadowMap,
+    db: &mut crate::db::Db,
 ) {
     let now = crate::time::now();
 
@@ -24,9 +25,12 @@ pub fn score_and_manage(
         };
 
         let fdv = ms.fdv.unwrap_or(0.0);
+        let fdv_v = ms.fdv.unwrap_or(0.0);
         println!(
-            "DBG callgate mint={} fdv={:?} liq={:?} tx_5m={:?}",
-            mint, ms.fdv, ms.liq, ms.tx_5m
+            "DBG callgate mint={} fdv={} tx_5m={}",
+            crate::fmt::mint(mint),
+            crate::fmt::fdv_fmt(fdv_v),
+            ms.tx_5m.unwrap_or(0)
         );
         let liq = ms.liq.unwrap_or(0.0);
         let tx_5m = ms.tx_5m.unwrap_or(0) as usize;
@@ -98,8 +102,8 @@ pub fn score_and_manage(
         // optional debug (safe, doesn't touch braces)
         println!(
             "DBG score mint={} score={} tx_5m={} signers_5m={} events={} first_seen={}",
-            mint,
-            st.score,
+            crate::fmt::mint(mint),
+            crate::fmt::score_fmt(st.score),
             st.tx_5m,
             st.unique_signers_5m,
             st.events.len(),
@@ -147,9 +151,8 @@ pub fn score_and_manage(
         }
 
         println!(
-            "✅ ACTIVE: {} (score={})",
-            mint,
-            coins.get(&mint).map(|s| s.score).unwrap_or(0)
+            "{}",
+            crate::fmt::active_line(&mint, coins.get(&mint).map(|s| s.score).unwrap_or(0))
         );
     }
 
@@ -172,9 +175,38 @@ pub fn score_and_manage(
                 score: sc,
             });
 
+            {
+                let now_ts = now as i64;
+                let tx5 = ms.tx_5m.unwrap_or(0);
+                let signers: u64 = coins
+                    .get(mint)
+                    .map(|s| s.unique_signers_5m as u64)
+                    .unwrap_or(0);
+                let ev: usize = coins.get(mint).map(|s| s.events.len()).unwrap_or(0);
+                let _ = db.insert_call(now_ts, mint, fdv, sc, tx5, signers, ev as usize);
+                let _ = db.insert_snapshot(
+                    now_ts,
+                    mint,
+                    Some(fdv),
+                    ms.tx_5m,
+                    sc,
+                    signers,
+                    ev as usize,
+                    coins.get(mint).map(|s| s.first_seen).unwrap_or(0),
+                    true,
+                    true,
+                );
+            }
             println!(
                 "{}",
-                crate::fmt::pink(&format!("📣 CALL: {} fdv=${:.0} score={}", mint, fdv, sc))
+                crate::fmt::call_line(
+                    mint.as_str(),
+                    fdv,
+                    sc,
+                    ms.tx_5m.unwrap_or(0),
+                    coins.get(mint).map(|s| s.unique_signers_5m).unwrap_or(0),
+                    coins.get(mint).map(|s| s.events.len()).unwrap_or(0),
+                )
             );
         }
     }

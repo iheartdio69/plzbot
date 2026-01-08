@@ -40,6 +40,7 @@ pub struct Config {
     // APIs
     pub helius_api_key: String,
     pub helius_rpc_url: String,
+    pub sqlite_path: String,
     pub helius_addr_url: String,
     pub fetch_limit: usize,
 
@@ -95,6 +96,7 @@ pub fn load_config() -> Config {
 
         // APIs
         helius_api_key: env_str("HELIUS_API_KEY", ""),
+        sqlite_path: env_str("SQLITE_PATH", "solana_meme.sqlite"),
         helius_rpc_url: env_str("HELIUS_RPC_URL", "https://mainnet.helius-rpc.com/?api-key="),
         helius_addr_url: env_str("HELIUS_ADDR_URL", "https://api.helius.xyz/v0/addresses"),
         fetch_limit: env_usize("FETCH_LIMIT", 50),

@@ -27,6 +27,9 @@ pub async fn run(cfg: Config) {
     let mut discovery = MarketDiscovery::default();
     let mut shadow = ShadowMap::new();
 
+
+      let mut db = crate::db::Db::open("solana_meme.sqlite").expect("db open failed");
+      let mut db = crate::db::Db::open(&cfg.sqlite_path).expect("db open failed");
     loop {
         println!(
             "🫀 tick | coins={} active={} calls={} discovered={}",
@@ -68,16 +71,15 @@ pub async fn run(cfg: Config) {
 
         // Scoring / calling
         score_and_manage(
-            &cfg,
-            &mut coins,
-            &mut active,
-            &mut queue,
-            &mut calls,
-            &market,
-            &mut shadow,
-        );
-
-        // Resolve outcomes
+              &cfg,
+              &mut coins,
+              &mut active,
+              &mut queue,
+              &mut calls,
+              &market,
+              &mut shadow,
+              &mut db,
+          );// Resolve outcomes
         resolve_calls(&cfg, &coins, &mut calls);
 
         tokio::time::sleep(Duration::from_secs(cfg.main_loop_sleep)).await;
