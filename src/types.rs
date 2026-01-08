@@ -18,6 +18,7 @@ pub struct Event {
 
 #[derive(Debug, Clone)]
 pub struct CoinState {
+    pub last_called_ts: u64,
     pub pair_address: Option<String>,
     pub first_seen: u64,
     pub events: Vec<Event>,
@@ -39,6 +40,7 @@ impl CoinState {
             first_seen: crate::time::now(),
             events: vec![],
             score: 0,
+            last_called_ts: 0,
             active: false,
             low_score_streak: 0,
             unique_signers_5m: 0,

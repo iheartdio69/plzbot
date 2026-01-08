@@ -113,10 +113,7 @@ impl MarketDiscovery {
                     None => continue,
                 };
 
-                let liq = match pair.liquidity.and_then(|l| l.usd) {
-                    Some(l) => l,
-                    None => continue,
-                };
+                let liq = pair.liquidity.and_then(|l| l.usd).unwrap_or(0.0);
 
                 let tx_5m = pair
                     .txns
@@ -134,7 +131,7 @@ impl MarketDiscovery {
                 }
 
                 if fdv >= cfg.discovery_min_fdv_usd
-                    && liq >= cfg.discovery_min_liq_usd
+                    && (liq == 0.0 || liq >= cfg.discovery_min_liq_usd)
                     && (tx_5m as u64) >= cfg.discovery_min_tx_5m
                 {
                     found_mints.insert(mint);
