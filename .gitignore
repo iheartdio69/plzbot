@@ -26,4 +26,5 @@ data/*.sqlite-wal
 data/*.sqlite-shm
 data/*.log
 logs/
-_archive/
+_archive/data/*.sqlite*
+data/*.bak*
