@@ -29,7 +29,7 @@ pub fn update_from_call_outcomes(db: &mut Db, _now_ts: i64) -> Result<()> {
         }
 
         // --- also attribute this call outcome to watchlist_wallets (W/L) ---
-        let is_win = result == "winner";
+        let is_win = result == "win";
         let bumped = db
             .bump_watchlist_wl_for_wallets(&wallet_ids, is_win)
             .unwrap_or(0);
