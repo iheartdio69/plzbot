@@ -213,6 +213,34 @@ pub fn score_all_coins(
         score += beluga * 5;
         score += blue * 10;
 
+        // ------------------------------------------------------------
+        // WHALE ENTRY BONUS: high-score watchlist wallet entered this mint
+        // ------------------------------------------------------------
+        let whale_threshold: i64 = 500;
+        let whale_lookback: i64 = 300; // last 5 minutes
+
+        let top_wallet_score: i64 = db
+            .top_wallets_for_mint_window(
+                mint.as_str(),
+                now_ts - whale_lookback,
+                now_ts,
+                5,
+            )
+            .unwrap_or_default()
+            .iter()
+            .filter_map(|(w, _)| db.wallet_score(w).ok())
+            .max()
+            .unwrap_or(0);
+
+        if top_wallet_score >= whale_threshold {
+            score += 300;
+            st.whale_entry = true;
+            st.whale_entry_score = top_wallet_score;
+        } else {
+            st.whale_entry = false;
+            st.whale_entry_score = 0;
+        }
+
         // Volume spike bonus
         if volume_spike {
             score += 300;

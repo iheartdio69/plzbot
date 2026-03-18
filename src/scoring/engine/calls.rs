@@ -1093,7 +1093,9 @@ pub fn process_calls(
         let mid_fdv_min: f64 = 120_000.0;
 
         // ----- primary lane tag (ALWAYS ONE) -----
-        let lane_tag: &str = if coins.get(mint).map(|s| s.is_volume_spike).unwrap_or(false) {
+        let lane_tag: &str = if coins.get(mint).map(|s| s.whale_entry).unwrap_or(false) {
+            "WHALE"
+        } else if coins.get(mint).map(|s| s.is_volume_spike).unwrap_or(false) {
             "SPIKE"
         } else if gambol_ok {
             "GAMBOL"
@@ -1139,6 +1141,7 @@ pub fn process_calls(
         );
         let colored_line = match lane_tag {
             "GAMBOL" => crate::fmt::red(&line),
+            "WHALE" => crate::fmt::green(&line),
             "SPIKE" => crate::fmt::green(&line),
             "RECOVERY" => crate::fmt::yellow(&line),
             "REVIVE" => crate::fmt::yellow(&line),
@@ -1154,9 +1157,16 @@ pub fn process_calls(
             chrono::Local::now().format("%-I:%M:%S %p")
         );
 
+        let whale_info = if lane_tag == "WHALE" {
+            format!("\n🐋 Whale score: {}",
+                coins.get(mint).map(|s| s.whale_entry_score).unwrap_or(0))
+        } else {
+            String::new()
+        };
+
         let tg_msg = format!(
-            "🎯 <b>INTERFECTOR</b>\nMint: <code>{}</code>\nLane: {}\nFDV: ${:.0}\nScore: {} | TX: {} | Signers: {}\n🔗 https://axiom.trade/t/{}",
-            mint, lane_tag, fdv, effective_score, tx5, signers, mint
+            "🎯 <b>INTERFECTOR</b>\nMint: <code>{}</code>\nLane: {}\nFDV: ${:.0}\nScore: {} | TX: {} | Signers: {}{}\n🔗 https://axiom.trade/t/{}",
+            mint, lane_tag, fdv, effective_score, tx5, signers, whale_info, mint
         );
         let _ = tg_tx.try_send(tg_msg);
 
