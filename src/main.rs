@@ -14,6 +14,7 @@ mod printing;
 mod pumpportal;
 mod resolver;
 mod scoring;
+mod tars;
 mod telegram;
 mod time;
 mod types;
@@ -88,6 +89,7 @@ async fn main() {
     let mut shadow = scoring::shadow::ShadowMap::new();
 
     let (tg_tx, mut tg_rx) = tokio::sync::mpsc::channel::<String>(100);
+    let mut tars_positions: Vec<crate::tars::Position> = Vec::new();
 
     // -------------------------
     // DB (one canonical open)
@@ -318,6 +320,110 @@ async fn main() {
                             telegram::send_alert(&token, &chat_id, &msg).await;
                         });
                     }
+                }
+
+                // TARS auto-buy on new calls
+                if cfg.tars_enabled {
+                    // open position for each new call
+                    for call in calls.iter().rev().take(1) {
+                        if let Some(ms) = market.map.get(&call.mint) {
+                            if let Some(fdv) = ms.fdv {
+                                let already_open = tars_positions.iter()
+                                    .any(|p| p.mint == call.mint && !p.closed);
+
+                                if !already_open {
+                                    let key = cfg.frontrun_api_key.clone();
+                                    let mint = call.mint.clone();
+                                    let sol = cfg.tars_buy_sol;
+
+                                    tokio::spawn(async move {
+                                        match crate::tars::buy(&key, &mint, sol).await {
+                                            Ok(sig) => println!("🤖 TARS BUY {} {:.2} SOL sig={}",
+                                                &mint[..8], sol, &sig[..8]),
+                                            Err(e) => eprintln!("🤖 TARS BUY ERR={:?}", e),
+                                        }
+                                    });
+
+                                    tars_positions.push(crate::tars::Position::new(
+                                        &call.mint, fdv, sol, now_ts
+                                    ));
+
+                                    println!("🤖 TARS opened position: {} entry=${:.0}",
+                                        &call.mint[..8], fdv);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // TARS position monitor
+                if cfg.tars_enabled && !tars_positions.is_empty() {
+                    let mut i = 0;
+                    while i < tars_positions.len() {
+                        let pos = &mut tars_positions[i];
+                        if pos.closed {
+                            i += 1;
+                            continue;
+                        }
+
+                        // get current FDV from market cache
+                        if let Some(ms) = market.map.get(&pos.mint) {
+                            if let Some(fdv) = ms.fdv {
+                                let signal = pos.check_exits(
+                                    fdv,
+                                    cfg.tars_tp1_mult,
+                                    cfg.tars_tp2_mult,
+                                    cfg.tars_sl_pct,
+                                );
+
+                                match signal {
+                                    Some(crate::tars::ExitSignal::TakeProfit1) => {
+                                        println!("🤖 TARS TP1: {} at ${:.0} ({:.2}x)",
+                                            &pos.mint[..8], fdv,
+                                            fdv / pos.entry_fdv);
+                                        let key = cfg.frontrun_api_key.clone();
+                                        let mint = pos.mint.clone();
+                                        tokio::spawn(async move {
+                                            match crate::tars::sell_percent(&key, &mint, 50.0).await {
+                                                Ok(sig) => println!("🤖 TARS TP1 sold 50% sig={}", &sig[..8]),
+                                                Err(e) => eprintln!("🤖 TARS TP1 ERR={:?}", e),
+                                            }
+                                        });
+                                    }
+                                    Some(crate::tars::ExitSignal::TakeProfit2) => {
+                                        println!("🤖 TARS TP2: {} at ${:.0} ({:.2}x)",
+                                            &pos.mint[..8], fdv,
+                                            fdv / pos.entry_fdv);
+                                        let key = cfg.frontrun_api_key.clone();
+                                        let mint = pos.mint.clone();
+                                        tokio::spawn(async move {
+                                            match crate::tars::sell_percent(&key, &mint, 50.0).await {
+                                                Ok(sig) => println!("🤖 TARS TP2 sold 25% sig={}", &sig[..8]),
+                                                Err(e) => eprintln!("🤖 TARS TP2 ERR={:?}", e),
+                                            }
+                                        });
+                                    }
+                                    Some(crate::tars::ExitSignal::StopLoss) => {
+                                        println!("🛑 TARS SL: {} at ${:.0} ({:.2}x)",
+                                            &pos.mint[..8], fdv,
+                                            fdv / pos.entry_fdv);
+                                        let key = cfg.frontrun_api_key.clone();
+                                        let mint = pos.mint.clone();
+                                        tokio::spawn(async move {
+                                            match crate::tars::sell_percent(&key, &mint, 100.0).await {
+                                                Ok(sig) => println!("🛑 TARS SL sold 100% sig={}", &sig[..8]),
+                                                Err(e) => eprintln!("🛑 TARS SL ERR={:?}", e),
+                                            }
+                                        });
+                                    }
+                                    None => {}
+                                }
+                            }
+                        }
+                        i += 1;
+                    }
+                    // clean up closed positions
+                    tars_positions.retain(|p| !p.closed);
                 }
 
                 // ------------------------------------------------------------

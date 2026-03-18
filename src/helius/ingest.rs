@@ -327,6 +327,11 @@ pub async fn ingest_wallet_activity(
                 coins.entry(mint.clone()).or_insert_with(CoinState::new);
 
                 if let Some(st) = coins.get_mut(&mint) {
+                    // Use the earliest transaction timestamp as first_seen
+                    if ts > 0 && (st.first_seen == 0 || ts < st.first_seen) {
+                        st.first_seen = ts;
+                    }
+
                     for wallet in signers.iter() {
                         st.events.push(Event {
                             wallet: wallet.clone(),

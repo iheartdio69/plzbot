@@ -58,6 +58,15 @@ pub struct Config {
     // Telegram
     pub telegram_bot_token: String,
     pub telegram_chat_id: String,
+
+    // TARS (auto-trading)
+    pub frontrun_api_key: String,
+    pub frontrun_wallet: String,
+    pub tars_enabled: bool,
+    pub tars_buy_sol: f64,
+    pub tars_tp1_mult: f64,
+    pub tars_tp2_mult: f64,
+    pub tars_sl_pct: f64,
 }
 
 pub fn load_config() -> Config {
@@ -123,6 +132,15 @@ pub fn load_config() -> Config {
         // Telegram
         telegram_bot_token: env_str("TELEGRAM_BOT_TOKEN", ""),
         telegram_chat_id: env_str("TELEGRAM_CHAT_ID", "374579541"),
+
+        // TARS (auto-trading)
+        frontrun_api_key: env_str("FRONTRUN_API_KEY", ""),
+        frontrun_wallet: env_str("FRONTRUN_WALLET", ""),
+        tars_enabled: env_bool("TARS_ENABLED", false),
+        tars_buy_sol: env_f64("TARS_BUY_SOL", 0.1),
+        tars_tp1_mult: env_f64("TARS_TP1_MULT", 1.5),
+        tars_tp2_mult: env_f64("TARS_TP2_MULT", 2.0),
+        tars_sl_pct: env_f64("TARS_SL_PCT", 0.25),
     }
 }
 

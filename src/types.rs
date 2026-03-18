@@ -62,6 +62,10 @@ pub struct CoinState {
     // gates / cached decision helpers
     // -------------------------
     pub skip_call_for_conc: bool,
+    pub is_recovery: bool,
+    pub is_volume_spike: bool,
+    pub prev_tx_5m: usize,
+    pub prev_tx_ts: u64,
     pub wallet_delta: i32,
 
     // -------------------------
@@ -96,6 +100,10 @@ impl CoinState {
             tx_5m: 0,
 
             skip_call_for_conc: false,
+            is_recovery: false,
+            is_volume_spike: false,
+            prev_tx_5m: 0,
+            prev_tx_ts: 0,
             wallet_delta: 0,
 
             demote_streak: 0,

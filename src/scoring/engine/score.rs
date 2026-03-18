@@ -48,6 +48,15 @@ pub fn score_all_coins(
         let liq: f64 = ms.liq.unwrap_or(0.0);
         st.tx_5m = ms.tx_5m.unwrap_or(0) as usize;
 
+        // Volume spike detection
+        let spike_interval: u64 = 60;
+        if st.prev_tx_ts == 0 || now.saturating_sub(st.prev_tx_ts) >= spike_interval {
+            st.prev_tx_5m = st.tx_5m;
+            st.prev_tx_ts = now;
+        }
+        let volume_spike: bool = st.prev_tx_5m >= 20
+            && st.tx_5m >= st.prev_tx_5m * 2;
+
         // ------------------------------------------------------------
         // 2) HARD FDV CAP at watch layer
         // ------------------------------------------------------------
@@ -203,6 +212,14 @@ pub fn score_all_coins(
 
         score += beluga * 5;
         score += blue * 10;
+
+        // Volume spike bonus
+        if volume_spike {
+            score += 300;
+            st.is_volume_spike = true;
+        } else {
+            st.is_volume_spike = false;
+        }
 
         // Shadow penalty
         if shadow::is_shadowed(shadow_map, mint.as_str(), now) {

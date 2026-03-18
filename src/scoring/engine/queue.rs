@@ -77,7 +77,15 @@ pub fn fill_queue(
     // ------------------------------------------------------------
     // 3) Best-first ordering
     // ------------------------------------------------------------
-    candidates.sort_by(|a, b| b.1.cmp(&a.1)); // score desc
+    candidates.sort_by(|a, b| {
+        let a_spike = coins.get(&a.0).map(|s| s.is_volume_spike).unwrap_or(false);
+        let b_spike = coins.get(&b.0).map(|s| s.is_volume_spike).unwrap_or(false);
+        let a_recovery = coins.get(&a.0).map(|s| s.is_recovery).unwrap_or(false);
+        let b_recovery = coins.get(&b.0).map(|s| s.is_recovery).unwrap_or(false);
+        b_spike.cmp(&a_spike)
+            .then(b_recovery.cmp(&a_recovery))
+            .then(b.1.cmp(&a.1))
+    });
 
     for (mint, _) in candidates {
         if queue.len() >= max_queue_len {
