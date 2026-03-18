@@ -216,6 +216,7 @@ async fn main() {
                         &market,
                         &active,
                         &queue,
+                        &calls,
                         now_ts,
                         200,
                         &shutdown,
@@ -595,6 +596,7 @@ fn snapshot_candidates(
     market: &MarketCache,
     active: &[String],
     queue: &VecDeque<String>,
+    calls: &Vec<CallRecord>,
     now_ts: i64,
     max_queue: usize,
     shutdown: &CancellationToken,
@@ -619,6 +621,14 @@ fn snapshot_candidates(
             mints.push(m.clone());
         }
     }
+    for call in calls.iter() {
+        let call_age = now_ts.saturating_sub(call.ts as i64);
+        if call_age <= 3600 {
+            if seen.insert(call.mint.clone()) {
+                mints.push(call.mint.clone());
+            }
+        }
+    }
 
     let mut wrote = 0usize;
 
@@ -637,6 +647,7 @@ fn snapshot_candidates(
             .get(&mint)
             .map(|s| s.unique_signers_5m as u64)
             .unwrap_or(0);
+        // first_seen: fall back to 0 if coin was cleaned up from HashMap
         let first_seen = coins.get(&mint).map(|s| s.first_seen).unwrap_or(0);
 
         // If we know absolutely nothing, skip
