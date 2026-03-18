@@ -1078,15 +1078,27 @@ pub fn process_calls(
         // -----------------
         // Tags + Color (ALWAYS tagged, 1 primary color)
         // -----------------
-        let newborn: bool = age_sec <= 180;
+        let db_first_seen: u64 = db.mint_first_seen_ts(mint.as_str())
+            .ok().flatten().unwrap_or(0) as u64;
+        let true_first_seen = if db_first_seen > 0 {
+            db_first_seen.min(first_seen)
+        } else {
+            first_seen
+        };
+        let true_age_sec = now.saturating_sub(true_first_seen);
+        let newborn: bool = true_age_sec <= 180;
 
         // Tune these whenever (this is just sane defaults)
         let runner_fdv_min: f64 = 700_000.0;
         let mid_fdv_min: f64 = 120_000.0;
 
         // ----- primary lane tag (ALWAYS ONE) -----
-        let lane_tag: &str = if gambol_ok {
+        let lane_tag: &str = if coins.get(mint).map(|s| s.is_volume_spike).unwrap_or(false) {
+            "SPIKE"
+        } else if gambol_ok {
             "GAMBOL"
+        } else if coins.get(mint).map(|s| s.is_recovery).unwrap_or(false) {
+            "RECOVERY"
         } else if revival_ok {
             "REVIVE"
         } else if fdv >= runner_fdv_min {
@@ -1127,6 +1139,8 @@ pub fn process_calls(
         );
         let colored_line = match lane_tag {
             "GAMBOL" => crate::fmt::red(&line),
+            "SPIKE" => crate::fmt::green(&line),
+            "RECOVERY" => crate::fmt::yellow(&line),
             "REVIVE" => crate::fmt::yellow(&line),
             "RUNNER" => crate::fmt::green(&line),
             "NEWBORN" => crate::fmt::cyan(&line),
