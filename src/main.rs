@@ -138,6 +138,10 @@ async fn main() {
     let (active_tx, active_rx_per_coin) =
         tokio::sync::watch::channel(Vec::<String>::new());
 
+    // Watch channel: pair addresses for onchain event ingestion
+    let (tracked_tx, tracked_rx_onchain) =
+        tokio::sync::watch::channel(Vec::<String>::new());
+
     // Background task 1: wallet learning (every 3 minutes)
     tokio::spawn({
         let cfg = cfg.clone();
@@ -188,6 +192,34 @@ async fn main() {
                             let mut bg_coins: HashMap<String, CoinState> = HashMap::new();
                             let _ = crate::helius::per_coin::ingest_pairs_for_active(
                                 &cfg, &mut bg_db, &mut bg_coins, &top10, gov.clone(),
+                            ).await;
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    // Background task 3: onchain events ingest (every 45 seconds)
+    tokio::spawn({
+        let cfg = cfg.clone();
+        let gov = gov.clone();
+        let shutdown = shutdown.clone();
+        let db_path = cfg.sqlite_path.clone();
+        let mut tracked_rx = tracked_rx_onchain;
+        async move {
+            let mut iv = tokio::time::interval(Duration::from_secs(45));
+            iv.set_missed_tick_behavior(MissedTickBehavior::Skip);
+            loop {
+                tokio::select! {
+                    _ = shutdown.cancelled() => break,
+                    _ = iv.tick() => {
+                        let tracked: Vec<String> = tracked_rx.borrow().clone();
+                        if tracked.is_empty() { continue; }
+                        if let Ok(mut bg_db) = crate::db::Db::open(&db_path) {
+                            let mut bg_coins: HashMap<String, CoinState> = HashMap::new();
+                            let _ = crate::scoring::onchain::fetch_onchain_events(
+                                &cfg, &mut bg_db, &mut bg_coins, &tracked, gov.clone(), &shutdown,
                             ).await;
                         }
                     }
@@ -383,8 +415,10 @@ async fn main() {
                         &tg_tx,
                     );
 
-                    // Share active list with background ingest tasks
+                    // Share active list and pair addresses with background ingest tasks
                     active_tx.send(active.clone()).ok();
+                    let tracked = build_tracked_pair_addresses(&coins, &active, &queue, 50);
+                    tracked_tx.send(tracked).ok();
 
                     while let Ok(msg) = tg_rx.try_recv() {
                         let token = cfg.telegram_bot_token.clone();
