@@ -1382,6 +1382,13 @@ pub fn process_calls(
             String::new()
         };
 
+        let buy_ratio = coins.get(mint).map(|s| s.buy_ratio_5m).unwrap_or(0.5);
+        let buy_str = if buy_ratio > 0.0 {
+            format!(" | 🟢 {:.0}%buy", buy_ratio * 100.0)
+        } else {
+            String::new()
+        };
+
         let social_str = if coins.get(mint).map(|s| s.has_socials || s.dex_has_socials).unwrap_or(false) {
             " | 🌐 Social"
         } else {
@@ -1405,9 +1412,9 @@ pub fn process_calls(
             .unwrap_or_default();
 
         let tg_msg = format!(
-            "🎯 <b>INTERFECTOR</b>\nMint: <code>{}</code>\nLane: {}\nFDV: ${:.0}\nScore: {} | TX: {} | Signers: {}{}{}{}{}{}{}{}{}\n🔗 https://axiom.trade/t/{}",
+            "🎯 <b>INTERFECTOR</b>\nMint: <code>{}</code>\nLane: {}\nFDV: ${:.0}\nScore: {} | TX: {} | Signers: {}{}{}{}{}{}{}{}{}{}\n🔗 https://axiom.trade/t/{}",
             mint, lane_tag, fdv, effective_score, tx5, signers,
-            whale_info, launch_sol_str, bc_str, sol_flow_str, social_str, holder_str, grad_str, boost_str,
+            whale_info, launch_sol_str, bc_str, sol_flow_str, buy_str, social_str, holder_str, grad_str, boost_str,
             mint
         );
         let _ = tg_tx.try_send(tg_msg);
