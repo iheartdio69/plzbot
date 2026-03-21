@@ -1363,6 +1363,11 @@ pub fn process_calls(
             .map(|v| format!(" | Launch: {:.2} SOL", v))
             .unwrap_or_default();
 
+        let bc_str = coins.get(mint)
+            .and_then(|s| s.bonding_curve_pct)
+            .map(|pct| format!(" | 📈 BC: {:.0}%", pct))
+            .unwrap_or_default();
+
         let sol_flow_str = if sol_flow_5m >= 0.01 {
             format!(" | SOL/5m: {:.2}", sol_flow_5m)
         } else {
@@ -1392,9 +1397,9 @@ pub fn process_calls(
             .unwrap_or_default();
 
         let tg_msg = format!(
-            "🎯 <b>INTERFECTOR</b>\nMint: <code>{}</code>\nLane: {}\nFDV: ${:.0}\nScore: {} | TX: {} | Signers: {}{}{}{}{}{}{}{}\n🔗 https://axiom.trade/t/{}",
+            "🎯 <b>INTERFECTOR</b>\nMint: <code>{}</code>\nLane: {}\nFDV: ${:.0}\nScore: {} | TX: {} | Signers: {}{}{}{}{}{}{}{}{}\n🔗 https://axiom.trade/t/{}",
             mint, lane_tag, fdv, effective_score, tx5, signers,
-            whale_info, launch_sol_str, sol_flow_str, social_str, holder_str, grad_str, boost_str,
+            whale_info, launch_sol_str, bc_str, sol_flow_str, social_str, holder_str, grad_str, boost_str,
             mint
         );
         let _ = tg_tx.try_send(tg_msg);

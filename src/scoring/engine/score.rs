@@ -268,6 +268,21 @@ pub fn score_all_coins(
             score += 10;
         }
 
+        // Bonding curve completion bonus
+        // 50-70%: building momentum → +15
+        // 70-90%: graduation zone, imminent listing → +30
+        // 90-99%: about to pop → +20 (already priced in somewhat)
+        // >99%: graduated, different market dynamics
+        if let Some(bc_pct) = st.bonding_curve_pct {
+            if bc_pct >= 70.0 && bc_pct < 95.0 {
+                score += 30; // graduation zone — this is the Axiom "almost graduated" column
+            } else if bc_pct >= 50.0 && bc_pct < 70.0 {
+                score += 15;
+            } else if bc_pct >= 95.0 && bc_pct < 100.0 {
+                score += 20; // nearly there
+            }
+        }
+
         // Launch SOL bonus (bonding curve depth at launch = early conviction signal)
         if let Some(launch_sol) = st.launch_sol {
             if launch_sol >= 10.0 {

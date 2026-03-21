@@ -692,8 +692,11 @@ fn drain_pump_mints(
         if !coins.contains_key(&mint) {
             let mut st = CoinState::new();
 
-            // Store launch SOL (bonding curve depth = real committed SOL)
+            // Store launch SOL + bonding curve % (pump.fun graduates at 85 SOL)
             st.launch_sol = pm.v_sol_in_bonding_curve;
+            if let Some(v_sol) = pm.v_sol_in_bonding_curve {
+                st.bonding_curve_pct = Some((v_sol / 85.0 * 100.0).min(100.0));
+            }
 
             // Store creator wallet + flag if it's a known rugger
             if let Some(ref creator) = pm.creator {
@@ -721,10 +724,11 @@ fn drain_pump_mints(
                 discovered.pop_front();
             }
         } else {
-            // Coin already known — update launch_sol if we now have it
+            // Coin already known — update bonding curve data if available
             if let Some(st) = coins.get_mut(&mint) {
-                if st.launch_sol.is_none() {
-                    st.launch_sol = pm.v_sol_in_bonding_curve;
+                if let Some(v_sol) = pm.v_sol_in_bonding_curve {
+                    st.launch_sol = Some(v_sol);
+                    st.bonding_curve_pct = Some((v_sol / 85.0 * 100.0).min(100.0));
                 }
             }
         }
