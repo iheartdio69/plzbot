@@ -48,6 +48,15 @@ pub fn score_all_coins(
         let liq: f64 = ms.liq.unwrap_or(0.0);
         st.tx_5m = ms.tx_5m.unwrap_or(0) as usize;
 
+        // Buy/sell ratio — accumulation signal
+        // >70% buys = strong bullish pressure, score bonus
+        // <40% buys = distribution/dump, penalty
+        let buys_5m = ms.buys_5m.unwrap_or(0) as f64;
+        let sells_5m = ms.sells_5m.unwrap_or(0) as f64;
+        let total_5m = buys_5m + sells_5m;
+        let buy_ratio: f64 = if total_5m > 10.0 { buys_5m / total_5m } else { 0.5 };
+        st.buy_ratio_5m = buy_ratio;
+
         // Volume spike detection
         let spike_interval: u64 = 60;
         if st.prev_tx_ts == 0 || now.saturating_sub(st.prev_tx_ts) >= spike_interval {
@@ -199,6 +208,12 @@ pub fn score_all_coins(
         score += tx5.min(200) as i32;
         score += (signers.min(40) * 2) as i32;
         score += events_5m.min(50) as i32;
+
+        // Buy pressure scoring
+        if buy_ratio >= 0.80 { score += 40; }
+        else if buy_ratio >= 0.70 { score += 25; }
+        else if buy_ratio >= 0.60 { score += 10; }
+        else if buy_ratio < 0.40 && total_5m > 10.0 { score -= 20; } // dumping
 
         // Wallet quality bonus
         if quality_hits >= 2 {

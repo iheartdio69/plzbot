@@ -94,6 +94,7 @@ pub struct CoinState {
     // sol flow (from events)
     // -------------------------
     pub sol_flow_5m: f64,              // cached SOL flow last 5m from event buffer
+    pub buy_ratio_5m: f64,             // buys/(buys+sells) last 5m — >0.7 = bullish
 
     // -------------------------
     // active clog control (demotion logic)
@@ -150,6 +151,7 @@ impl CoinState {
             enrichment_done: false,
 
             sol_flow_5m: 0.0,
+            buy_ratio_5m: 0.5,
 
             demote_streak: 0,
             last_demote_ts: 0,
