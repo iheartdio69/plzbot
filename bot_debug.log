@@ -1,6 +1,6 @@
 DBG cwd=/Users/INTERFECTORv.1/Desktop/TARS/bots/plzbot-rules
 DBG .env exists? true
-DBG raw env MIN_CALL_FDV_USD=Some("8000") MAX_CALL_FDV_USD=Some("120000")
+DBG raw env MIN_CALL_FDV_USD=None MAX_CALL_FDV_USD=None
 [38;5;82m[1m
 ██╗███╗   ██╗██╗████████╗██╗ █████╗ ██╗     ██╗███████╗███████╗
 ██║████╗  ██║██║╚══██╔══╝██║██╔══██╗██║     ██║╚══███╔╝██╔════╝
@@ -11,530 +11,175 @@ DBG raw env MIN_CALL_FDV_USD=Some("8000") MAX_CALL_FDV_USD=Some("120000")
 
    INITIALIZING SOLANA MEME ENGINE
 [0m
-CFG call band: min_call_fdv_usd=8000 max_call_fdv_usd=120000
-DB sqlite_path = ./data/STUPID_MAIN_DB_DO_NOT_TOUCH.sqlite
-🗄️ Db::open path(arg) = ./data/STUPID_MAIN_DB_DO_NOT_TOUCH.sqlite
-🗄️ Db::open path(abs) = /Users/INTERFECTORv.1/solana_meme/data/STUPID_MAIN_DB_DO_NOT_TOUCH.sqlite
+CFG call band: min_call_fdv_usd=15000 max_call_fdv_usd=500000
+DB sqlite_path = data/solana_meme.sqlite
+🗄️ Db::open path(arg) = data/solana_meme.sqlite
+🗄️ Db::open path(abs) = /Users/INTERFECTORv.1/Desktop/TARS/bots/plzbot-rules/data/solana_meme.sqlite
+🗄️ Added is_mayhem column to mint_snapshots (migration applied)
 [38;5;82m🚀 Solana Meme Sniper started[0m (Ctrl+C to stop)
 [35m● INTERFECTOR ONLINE — watching for signals...[0m
 🟣 pumpportal connecting: wss://pumpportal.fun/api/data
-[35m🌊 INTERFECTOR INITIALIZING...[0m  🗄️ Db::open path(arg) = ./data/STUPID_MAIN_DB_DO_NOT_TOUCH.sqlite
-🗄️ Db::open path(abs) = /Users/INTERFECTORv.1/solana_meme/data/STUPID_MAIN_DB_DO_NOT_TOUCH.sqlite
-DBG helius ingest: api_key_len=36 wallets=12 (concurrent)
-[38;5;117m🕵️ discovery[0m got=1 added=1 coins=0
+[35m🌊 INTERFECTOR INITIALIZING...[0m  🗄️ Db::open path(arg) = data/solana_meme.sqlite
+🗄️ Db::open path(abs) = /Users/INTERFECTORv.1/Desktop/TARS/bots/plzbot-rules/data/solana_meme.sqlite
+[35m🩷🩷 INTERFECTOR HUNTING[0m  [38;5;117m🕵️ discovery[0m got=1 added=1 coins=0
 ✅ pumpportal connected
 🟣 pumpportal subscribed: newToken
-[35m🩷🩷 INTERFECTOR HUNTING[0m  DBG pair_address propagated=1
-DBG QUEUE filled=1 active=0 coins=1
-✅ ACTIVE: [1m[38;5;121mA1J21pZcGXoHooA44tEdWVPTcLTLUQFBPdZHf5iR9UK1[0m (score=[38;5;117m71[0m)
-DBG SKIP reason=FDV_TOO_LOW bucket=fdv mint=[1m[38;5;121mA1J21pZcGXoHooA44tEdWVPTcLTLUQFBPdZHf5iR9UK1[0m
-DBG ACTIVE_ROTATION start=1 removed=0 end=1
-DBG TICK: coins=1 active=1 queue=0 snapshots_written=1
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=3[0m [2mcalled=0[0m skips: [38;5;208mfdv=1[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=1[0m [2mqueue=0[0m
-DBG outcomes: now_ts=1774062757
+DBG pair_address propagated=1
+DBG QUEUE filled=0 active=0 coins=1
+DBG ACTIVE_ROTATION start=0 removed=0 end=0
+DBG TICK: coins=1 active=0 queue=0 snapshots_written=0
+[38;5;226m🧮 scoring[0m [38;5;117mconsidered=2[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
+DBG outcomes: now_ts=1774063399
 DBG outcomes: pending=0
-[35m●●○○[0m [38;5;208m🫀 hb[0m local=9:12:37 PM coins=1 active=1 queue=0 calls=0 discovered=1
-DBG snapshots wrote=1
-DBG QUEUE filled=1 active=0 coins=1
-✅ ACTIVE: [1m[38;5;121mA1J21pZcGXoHooA44tEdWVPTcLTLUQFBPdZHf5iR9UK1[0m (score=[38;5;117m71[0m)
-DBG SKIP reason=FDV_TOO_LOW bucket=fdv mint=[1m[38;5;121mA1J21pZcGXoHooA44tEdWVPTcLTLUQFBPdZHf5iR9UK1[0m
-DBG ACTIVE_ROTATION start=1 removed=0 end=1
-DBG TICK: coins=1 active=1 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=3[0m [2mcalled=0[0m skips: [38;5;208mfdv=1[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=1[0m [2mqueue=0[0m
-[35m🩷🩷🩷 INTERFECTOR HUNTING[0m  DBG snapshots wrote=1
-DBG QUEUE filled=1 active=0 coins=1
-✅ ACTIVE: [1m[38;5;121mA1J21pZcGXoHooA44tEdWVPTcLTLUQFBPdZHf5iR9UK1[0m (score=[38;5;117m71[0m)
-DBG SKIP reason=FDV_TOO_LOW bucket=fdv mint=[1m[38;5;121mA1J21pZcGXoHooA44tEdWVPTcLTLUQFBPdZHf5iR9UK1[0m
-DBG ACTIVE_ROTATION start=1 removed=0 end=1
-DBG TICK: coins=1 active=1 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=3[0m [2mcalled=0[0m skips: [38;5;208mfdv=1[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=1[0m [2mqueue=0[0m
-[35m💗 INTERFECTOR HUNTING[0m  DBG snapshots wrote=1
-DBG QUEUE filled=1 active=0 coins=1
-✅ ACTIVE: [1m[38;5;121mA1J21pZcGXoHooA44tEdWVPTcLTLUQFBPdZHf5iR9UK1[0m (score=[38;5;117m71[0m)
-DBG SKIP reason=FDV_TOO_LOW bucket=fdv mint=[1m[38;5;121mA1J21pZcGXoHooA44tEdWVPTcLTLUQFBPdZHf5iR9UK1[0m
-DBG DEMOTE_ACTIVE mint=[1m[38;5;121mA1J21pZcGXoHooA44tEdWVPTcLTLUQFBPdZHf5iR9UK1[0m reason=FDV_TOO_LOW bucket=fdv streak_reached=10
-DBG ACTIVE_ROTATION start=1 removed=1 end=0
-DBG TICK: coins=1 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=3[0m [2mcalled=0[0m skips: [38;5;208mfdv=1[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-DBG QUEUE filled=0 active=0 coins=1
+[38;5;196mDBG wallet_outcomes ERR=no such table: wallet_outcomes
+
+Caused by:
+    Error code 1: SQL error or missing database[0m
+[35m●●●●[0m [38;5;208m🫀 hb[0m local=9:23:20 PM coins=1 active=0 queue=0 calls=0 discovered=1
+[35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=1
 DBG ACTIVE_ROTATION start=0 removed=0 end=0
 DBG TICK: coins=1 active=0 queue=0 snapshots_written=0
 [38;5;226m🧮 scoring[0m [38;5;117mconsidered=2[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💓 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=1
+[35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=1
 DBG ACTIVE_ROTATION start=0 removed=0 end=0
 DBG TICK: coins=1 active=0 queue=0 snapshots_written=0
 [38;5;226m🧮 scoring[0m [38;5;117mconsidered=2[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-DBG QUEUE filled=0 active=0 coins=1
+[35m●●●○[0m [38;5;208m🫀 hb[0m local=9:23:30 PM coins=1 active=0 queue=0 calls=0 discovered=1
+[35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=1
 DBG ACTIVE_ROTATION start=0 removed=0 end=0
 DBG TICK: coins=1 active=0 queue=0 snapshots_written=0
 [38;5;226m🧮 scoring[0m [38;5;117mconsidered=2[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💕 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=1
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=1 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=2[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-DBG QUEUE filled=0 active=0 coins=1
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=1 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=2[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=1
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=1 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=2[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=1
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=1 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=2[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-DBG QUEUE filled=0 active=0 coins=1
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=1 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=2[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷🩷🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=1
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=1 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=2[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💗 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=1
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=1 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=2[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-DBG QUEUE filled=0 active=0 coins=1
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=1 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=2[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💓 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=1
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=1 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=2[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[38;5;205m🟣 pumpportal[0m added=1 coins=2
+[35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [38;5;205m🟣 pumpportal[0m added=1 coins=2
 [35m💕 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=2
 DBG ACTIVE_ROTATION start=0 removed=0 end=0
 DBG TICK: coins=2 active=0 queue=0 snapshots_written=0
 [38;5;226m🧮 scoring[0m [38;5;117mconsidered=4[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-DBG QUEUE filled=0 active=0 coins=2
+[35m●○○○[0m [38;5;208m🫀 hb[0m local=9:23:41 PM coins=2 active=0 queue=0 calls=0 discovered=2
+[35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=2
 DBG ACTIVE_ROTATION start=0 removed=0 end=0
 DBG TICK: coins=2 active=0 queue=0 snapshots_written=0
 [38;5;226m🧮 scoring[0m [38;5;117mconsidered=4[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=2
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=2 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=4[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=2
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=2 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=4[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-DBG QUEUE filled=0 active=0 coins=2
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=2 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=4[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷🩷🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=2
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=2 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=4[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-DBG QUEUE filled=0 active=0 coins=2
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=2 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=4[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💗 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=2
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=2 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=4[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💓 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=2
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=2 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=4[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-DBG QUEUE filled=0 active=0 coins=2
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=2 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=4[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💕 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=2
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=2 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=4[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-DBG QUEUE filled=0 active=0 coins=2
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=2 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=4[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=2
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=2 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=4[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=2
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=2 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=4[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[38;5;205m🟣 pumpportal[0m added=1 coins=3
-[35m🩷🩷🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=3
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=3 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=6[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💗 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=3
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=3 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=6[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💓 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=3
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=3 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=6[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💕 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=3
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=3 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=6[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-DBG QUEUE filled=0 active=0 coins=3
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=3 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=6[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=3
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=3 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=6[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m●●●●[0m [38;5;208m🫀 hb[0m local=9:12:47 PM coins=3 active=0 queue=0 calls=0 discovered=3
-[38;5;205m🟣 pumpportal[0m added=1 coins=4
-[35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=4
+[35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [38;5;205m🟣 pumpportal[0m added=2 coins=4
+[35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=4
 DBG ACTIVE_ROTATION start=0 removed=0 end=0
 DBG TICK: coins=4 active=0 queue=0 snapshots_written=0
 [38;5;226m🧮 scoring[0m [38;5;117mconsidered=8[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💓 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=4
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=4 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=8[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💕 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=4
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=4 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=8[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=4
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=4 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=8[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=4
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=4 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=8[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷🩷🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=4
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=4 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=8[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=4
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=4 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=8[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💕 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=4
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=4 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=8[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=4
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=4 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=8[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=4
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=4 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=8[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷🩷🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=4
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=4 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=8[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💗 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=4
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=4 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=8[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💓 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=4
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=4 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=8[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[38;5;205m🟣 pumpportal[0m added=1 coins=5
+[35m●●●●[0m [38;5;208m🫀 hb[0m local=9:23:52 PM coins=4 active=0 queue=0 calls=0 discovered=4
+[35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [38;5;205m🟣 pumpportal[0m added=1 coins=5
 [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=5
 DBG ACTIVE_ROTATION start=0 removed=0 end=0
 DBG TICK: coins=5 active=0 queue=0 snapshots_written=0
 [38;5;226m🧮 scoring[0m [38;5;117mconsidered=10[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=5
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=5 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=10[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=5
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=5 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=10[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💓 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=5
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=5 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=10[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=5
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=5 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=10[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=5
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=5 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=10[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[38;5;205m🟣 pumpportal[0m added=1 coins=6
-[35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=6
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=6 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=12[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m●●○○[0m [38;5;208m🫀 hb[0m local=9:12:58 PM coins=6 active=0 queue=0 calls=0 discovered=6
-[35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=6
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=6 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=12[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=6
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=6 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=12[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=6
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=6 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=12[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💓 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=6
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=6 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=12[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[38;5;205m🟣 pumpportal[0m added=1 coins=7
-[35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=7
+[35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [38;5;205m🟣 pumpportal[0m added=2 coins=7
+[35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=7
 DBG ACTIVE_ROTATION start=0 removed=0 end=0
 DBG TICK: coins=7 active=0 queue=0 snapshots_written=0
 [38;5;226m🧮 scoring[0m [38;5;117mconsidered=14[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=7
+[35m●●●●[0m [38;5;208m🫀 hb[0m local=9:24:04 PM coins=7 active=0 queue=0 calls=0 discovered=7
+[35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=7
 DBG ACTIVE_ROTATION start=0 removed=0 end=0
 DBG TICK: coins=7 active=0 queue=0 snapshots_written=0
 [38;5;226m🧮 scoring[0m [38;5;117mconsidered=14[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=7
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=7 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=14[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=7
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=7 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=14[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=7
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=7 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=14[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=7
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=7 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=14[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=7
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=7 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=14[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=7
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=7 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=14[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=7
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=7 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=14[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m●●●●[0m [38;5;208m🫀 hb[0m local=9:13:08 PM coins=7 active=0 queue=0 calls=0 discovered=7
-[35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=7
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=7 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=14[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=7
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=7 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=14[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=7
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=7 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=14[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=7
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=7 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=14[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  DBG pair_address propagated=1
-DBG QUEUE filled=0 active=0 coins=7
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=7 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=14[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=7
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=7 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=14[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=7
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=7 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=14[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  DBG pair_address propagated=1
-DBG QUEUE filled=0 active=0 coins=7
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=7 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=14[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=7
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=7 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=14[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=7
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=7 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=14[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=7
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=7 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=14[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m●●○○[0m [38;5;208m🫀 hb[0m local=9:13:18 PM coins=7 active=0 queue=0 calls=0 discovered=7
-[35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  DBG pair_address propagated=1
-DBG QUEUE filled=0 active=0 coins=7
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=7 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=14[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=7
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=7 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=14[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=7
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=7 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=14[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=7
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=7 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=14[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=7
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=7 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=14[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=7
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=7 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=14[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[38;5;205m🟣 pumpportal[0m added=1 coins=8
-[35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=8
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=8 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=16[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=8
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=8 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=16[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=8
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=8 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=16[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=8
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=8 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=16[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=8
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=8 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=16[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m●●●●[0m [38;5;208m🫀 hb[0m local=9:13:27 PM coins=8 active=0 queue=0 calls=0 discovered=8
-[35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=8
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=8 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=16[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=8
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=8 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=16[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[38;5;205m🟣 pumpportal[0m added=1 coins=9
-[35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=9
+[35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [38;5;205m🟣 pumpportal[0m added=2 coins=9
+[35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  DBG pair_address propagated=1
+DBG QUEUE filled=0 active=0 coins=9
 DBG ACTIVE_ROTATION start=0 removed=0 end=0
 DBG TICK: coins=9 active=0 queue=0 snapshots_written=0
 [38;5;226m🧮 scoring[0m [38;5;117mconsidered=18[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[38;5;205m🟣 pumpportal[0m added=3 coins=12
-[35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=12
+[35m●●●●[0m [38;5;208m🫀 hb[0m local=9:24:16 PM coins=9 active=0 queue=0 calls=0 discovered=9
+[35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [38;5;205m🟣 pumpportal[0m added=1 coins=10
+[35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  DBG pair_address propagated=2
+DBG QUEUE filled=0 active=0 coins=10
 DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=12 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=24[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[38;5;205m🟣 pumpportal[0m added=1 coins=13
-[35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=13
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=13 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=26[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=13
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=13 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=26[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=13
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=13 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=26[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=13
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=13 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=26[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=13
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=13 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=26[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-DBG outcomes: now_ts=1774062818
+DBG TICK: coins=10 active=0 queue=0 snapshots_written=0
+[38;5;226m🧮 scoring[0m [38;5;117mconsidered=20[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
+DBG outcomes: now_ts=1774063461
 DBG outcomes: pending=0
-[35m●●●○[0m [38;5;208m🫀 hb[0m local=9:13:39 PM coins=13 active=0 queue=0 calls=0 discovered=13
-[35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=13
+[38;5;196mDBG wallet_outcomes ERR=no such table: wallet_outcomes
+
+Caused by:
+    Error code 1: SQL error or missing database[0m
+[35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [38;5;205m🟣 pumpportal[0m added=3 coins=13
+[35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  DBG pair_address propagated=1
+DBG QUEUE filled=0 active=0 coins=13
 DBG ACTIVE_ROTATION start=0 removed=0 end=0
 DBG TICK: coins=13 active=0 queue=0 snapshots_written=0
 [38;5;226m🧮 scoring[0m [38;5;117mconsidered=26[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=13
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=13 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=26[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[38;5;205m🟣 pumpportal[0m added=1 coins=14
-[35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=14
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=14 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=28[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[38;5;205m🟣 pumpportal[0m added=1 coins=15
-[35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=15
+[35m●○○○[0m [38;5;208m🫀 hb[0m local=9:24:30 PM coins=13 active=0 queue=0 calls=0 discovered=13
+[35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [38;5;205m🟣 pumpportal[0m added=2 coins=15
+[35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  DBG pair_address propagated=2
+DBG QUEUE filled=0 active=0 coins=15
 DBG ACTIVE_ROTATION start=0 removed=0 end=0
 DBG TICK: coins=15 active=0 queue=0 snapshots_written=0
 [38;5;226m🧮 scoring[0m [38;5;117mconsidered=30[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=15
+[35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=15
 DBG ACTIVE_ROTATION start=0 removed=0 end=0
 DBG TICK: coins=15 active=0 queue=0 snapshots_written=0
 [38;5;226m🧮 scoring[0m [38;5;117mconsidered=30[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[38;5;205m🟣 pumpportal[0m added=3 coins=18
-[35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=18
+[35m●●●○[0m [38;5;208m🫀 hb[0m local=9:24:44 PM coins=15 active=0 queue=0 calls=0 discovered=15
+[35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [38;5;205m🟣 pumpportal[0m added=1 coins=16
+[35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  DBG pair_address propagated=2
+DBG QUEUE filled=0 active=0 coins=16
 DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=18 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=36[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[38;5;205m🟣 pumpportal[0m added=2 coins=20
-[35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=20
+DBG TICK: coins=16 active=0 queue=0 snapshots_written=0
+[38;5;226m🧮 scoring[0m [38;5;117mconsidered=32[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
+[35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [38;5;205m🟣 pumpportal[0m added=4 coins=20
+[35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  DBG pair_address propagated=4
+DBG QUEUE filled=0 active=0 coins=20
 DBG ACTIVE_ROTATION start=0 removed=0 end=0
 DBG TICK: coins=20 active=0 queue=0 snapshots_written=0
 [38;5;226m🧮 scoring[0m [38;5;117mconsidered=40[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m●●○○[0m [38;5;208m🫀 hb[0m local=9:13:52 PM coins=20 active=0 queue=0 calls=0 discovered=20
-[38;5;205m🟣 pumpportal[0m added=1 coins=21
-[35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=21
+[35m●●○○[0m [38;5;208m🫀 hb[0m local=9:25:00 PM coins=20 active=0 queue=0 calls=0 discovered=20
+[35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [38;5;205m🟣 pumpportal[0m added=2 coins=22
+[35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  DBG pair_address propagated=3
+DBG QUEUE filled=0 active=0 coins=22
 DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=21 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=42[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[38;5;205m🟣 pumpportal[0m added=2 coins=23
-[35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=23
+DBG TICK: coins=22 active=0 queue=0 snapshots_written=0
+[38;5;226m🧮 scoring[0m [38;5;117mconsidered=44[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
+[35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [38;5;205m🟣 pumpportal[0m added=3 coins=25
+[35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  DBG pair_address propagated=1
+DBG QUEUE filled=0 active=0 coins=25
 DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=23 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=46[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=23
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=23 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=46[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=23
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=23 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=46[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m●○○○[0m [38;5;208m🫀 hb[0m local=9:14:02 PM coins=23 active=0 queue=0 calls=0 discovered=23
-[38;5;205m🟣 pumpportal[0m added=1 coins=24
-[35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=24
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=24 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=48[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[38;5;205m🟣 pumpportal[0m added=2 coins=26
-[35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=26
-DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=26 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=52[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[38;5;205m🟣 pumpportal[0m added=1 coins=27
-[35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=27
+DBG TICK: coins=25 active=0 queue=0 snapshots_written=0
+[38;5;226m🧮 scoring[0m [38;5;117mconsidered=50[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
+[35m●●●○[0m [38;5;208m🫀 hb[0m local=9:25:17 PM coins=25 active=0 queue=0 calls=0 discovered=25
+[35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [38;5;205m🟣 pumpportal[0m added=2 coins=27
+[35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  DBG pair_address propagated=1
+DBG QUEUE filled=0 active=0 coins=27
 DBG ACTIVE_ROTATION start=0 removed=0 end=0
 DBG TICK: coins=27 active=0 queue=0 snapshots_written=0
 [38;5;226m🧮 scoring[0m [38;5;117mconsidered=54[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=27
+DBG outcomes: now_ts=1774063522
+DBG outcomes: pending=0
+[38;5;196mDBG wallet_outcomes ERR=no such table: wallet_outcomes
+
+Caused by:
+    Error code 1: SQL error or missing database[0m
+[35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  DBG pair_address propagated=2
+DBG QUEUE filled=0 active=0 coins=27
 DBG ACTIVE_ROTATION start=0 removed=0 end=0
 DBG TICK: coins=27 active=0 queue=0 snapshots_written=0
 [38;5;226m🧮 scoring[0m [38;5;117mconsidered=54[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m●●●●[0m [38;5;208m🫀 hb[0m local=9:14:14 PM coins=27 active=0 queue=0 calls=0 discovered=27
-[35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  DBG QUEUE filled=0 active=0 coins=27
+[35m●●●●[0m [38;5;208m🫀 hb[0m local=9:25:36 PM coins=27 active=0 queue=0 calls=0 discovered=27
+[35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [38;5;205m🟣 pumpportal[0m added=2 coins=29
+[35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  DBG pair_address propagated=2
+DBG QUEUE filled=0 active=0 coins=29
 DBG ACTIVE_ROTATION start=0 removed=0 end=0
-DBG TICK: coins=27 active=0 queue=0 snapshots_written=0
-[38;5;226m🧮 scoring[0m [38;5;117mconsidered=54[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
-[35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  
+DBG TICK: coins=29 active=0 queue=0 snapshots_written=0
+[38;5;226m🧮 scoring[0m [38;5;117mconsidered=58[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
+[35m●●○○[0m [38;5;208m🫀 hb[0m local=9:25:45 PM coins=29 active=0 queue=0 calls=0 discovered=29
+[35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [38;5;205m🟣 pumpportal[0m added=2 coins=31
+[35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  DBG pair_address propagated=4
+DBG QUEUE filled=0 active=0 coins=31
+DBG ACTIVE_ROTATION start=0 removed=0 end=0
+DBG TICK: coins=31 active=0 queue=0 snapshots_written=0
+[38;5;226m🧮 scoring[0m [38;5;117mconsidered=62[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
+[35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [38;5;205m🟣 pumpportal[0m added=4 coins=35
+[35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  DBG pair_address propagated=1
+DBG QUEUE filled=0 active=0 coins=35
+DBG ACTIVE_ROTATION start=0 removed=0 end=0
+DBG TICK: coins=35 active=0 queue=0 snapshots_written=0
+[38;5;226m🧮 scoring[0m [38;5;117mconsidered=70[0m [2mcalled=0[0m skips: [2mfdv=0[0m [2mconc=0[0m [2mwallet=0[0m [2mcooldown=0[0m [2msigner=0[0m [2mother=0[0m [2mqueue_dropped=0[0m [38;5;117mactive=0[0m [2mqueue=0[0m
+[35m●○○○[0m [38;5;208m🫀 hb[0m local=9:26:06 PM coins=35 active=0 queue=0 calls=0 discovered=35
+[35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [38;5;205m🟣 pumpportal[0m added=4 coins=39
+[35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  [35m💕 INTERFECTOR HUNTING[0m  [35m🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷 INTERFECTOR HUNTING[0m  [35m🩷🩷🩷 INTERFECTOR HUNTING[0m  [35m💗 INTERFECTOR HUNTING[0m  [35m💓 INTERFECTOR HUNTING[0m  
