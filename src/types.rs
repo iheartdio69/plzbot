@@ -73,7 +73,8 @@ pub struct CoinState {
     // -------------------------
     // pump.fun launch data (from PumpPortal, free at discovery)
     // -------------------------
-    pub launch_sol: Option<f64>,       // vSolInBondingCurve at first seen
+    pub launch_sol: Option<f64>,        // vSolInBondingCurve at first seen
+    pub bonding_curve_pct: Option<f64>, // % of graduation (85 SOL = 100%)
     pub creator_wallet: Option<String>, // deployer wallet — checked vs rug DB
     pub creator_is_rug: bool,           // true = creator flagged in wallets table
     pub social_score: i32,              // points for twitter/telegram/website at launch
@@ -135,6 +136,7 @@ impl CoinState {
             wallet_delta: 0,
 
             launch_sol: None,
+            bonding_curve_pct: None,
             creator_wallet: None,
             creator_is_rug: false,
             social_score: 0,
