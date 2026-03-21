@@ -1070,7 +1070,11 @@ pub fn process_calls(
                 in_momentum_warmup
             };
 
-            if eps < eps_min || !fdv_follow_ok {
+            // High tx_5m (>300) is conviction on its own — DexScreener volume is real
+            // even if Helius events haven't populated yet
+            let high_volume_bypass = tx5 >= 300;
+
+            if !high_volume_bypass && (eps < eps_min || !fdv_follow_ok) {
                 skip_and_maybe_demote(
                     "EVENTS_NO_CONVICTION",
                     "events",
