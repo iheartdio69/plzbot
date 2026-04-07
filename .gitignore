@@ -30,3 +30,17 @@ data/*.log
 logs/
 _archive/data/*.sqlite*
 data/*.bak*
+
+# === NEVER COMMIT SECRETS ===
+.env
+.env.*
+*.env
+.env.bak*
+*.key
+*.pem
+*.secret
+*private_key*
+*PRIVATE_KEY*
+secrets/
+credentials/
+
